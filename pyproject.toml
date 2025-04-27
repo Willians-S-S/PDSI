@@ -1,0 +1,40 @@
+[project]
+name = "predpeso"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Willians-S-S", email = "09willians@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "fastapi[standard] (>=0.115.8,<0.116.0)",
+    "sqlalchemy (>=2.0.38,<3.0.0)",
+    "decouple (>=0.0.7,<0.0.8)",
+    "alembic (>=1.14.1,<2.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "tensorflow (>=2.18.0,<3.0.0)",
+    "opencv-python-headless (>=4.11.0.86,<5.0.0.0)",
+    "pwdlib[argon2] (>=0.2.1,<0.3.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "pyjwt (>=2.10.1,<3.0.0)",
+    "passlib[bcrypt] (>=1.7.4,<2.0.0)",
+]
+
+[tool.poetry] # Seção tool.poetry
+packages = [{include = "predpeso", from = "src"}] # packages DENTRO de tool.poetry
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+pandas = "^2.2.0"  # Remova se não for usar
+scikit-learn = "^1.4.1"  # Remova se não for usar
+matplotlib = "^3.8.2" # Remova se nao for usar.
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
