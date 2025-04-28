@@ -1,0 +1,17 @@
+
+__pycache__/
+
+*.pyc
+
+.vscode/
+*.log
+
+venv/
+env/
+ENV/
+.env
+
+database.db
+alembic.ini
+migrations
+teste.py
