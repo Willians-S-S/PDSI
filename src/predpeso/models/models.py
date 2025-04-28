@@ -63,3 +63,47 @@ class FarmModel(Base):
         cascade="all, delete-orphan", 
         passive_deletes=True 
     )
+
+    animals: Mapped[list["AnimalModel"]] = relationship("AnimalModel",
+                                                        back_populates="farm",
+                                                        cascade="all, delete",
+                                                        passive_deletes=True
+                                                        )
+
+
+class AnimalModel(Base):
+    __tablename__ = 'animal'
+
+    id: Mapped[str] = mapped_column(primary_key=True, unique= True)
+    name: Mapped[str] = mapped_column(nullable=False)
+    breed: Mapped[str] = mapped_column(nullable=True)
+    age: Mapped[int] = mapped_column(nullable=True)
+    gender: Mapped[str] = mapped_column(nullable=False)
+    image_url: Mapped[str] = mapped_column(nullable=True)
+    health_condition: Mapped[str] = mapped_column(nullable=True)
+    created_at: Mapped[datetime] = mapped_column(nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(nullable=False)
+
+    farm_id: Mapped[str] = mapped_column(ForeignKey("farm.id", ondelete="CASCADE"), nullable=False)
+    
+    farm: Mapped["FarmModel"] = relationship("FarmModel",
+                                             back_populates="animals") 
+    
+    historys: Mapped[list["History"]] = relationship("History",
+                                                     back_populates="animal",
+                                                     cascade="all, delete-orphan",
+                                                     passive_deletes=True
+                                                     )
+
+
+class History(Base):
+    __tablename__ = 'history'
+
+    id: Mapped[str] = mapped_column(primary_key=True, unique= True)
+    weight_manual: Mapped[float] = mapped_column(nullable=True)
+    current_weight: Mapped[float] = mapped_column(nullable=True)
+    created_at: Mapped[datetime] = mapped_column(nullable=False)
+
+    animal_id: Mapped[str] = mapped_column(ForeignKey("animal.id", ondelete="CASCADE"), nullable=False)
+    animal: Mapped["AnimalModel"] = relationship("AnimalModel",
+                                                 back_populates="historys")
