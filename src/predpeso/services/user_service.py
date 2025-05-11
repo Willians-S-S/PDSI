@@ -6,6 +6,9 @@ from sqlalchemy.orm import Session
 import uuid
 from predpeso.models.models import UserModel, UserFarmRole
 from predpeso.schemas.user_schemas import UserRequest, UserResponse, UserUpdate
+from predpeso.commons.image import save_image, delete_image
+from predpeso.security.password_hash import get_password_hash, verify_password
+from predpeso.security.jwt_token import create_acess_token
 
 class UserService:
     def __init__(self, db_session: Session) -> None:
@@ -87,3 +90,50 @@ class UserService:
         users_on_db = self.db_session.query(UserModel).all()
 
         return users_on_db
+    
+    def update(self, user: UserUpdate, user_id: str, current_user: UserModel) -> UserResponse:
+
+        if(current_user.id != user_id):
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Não autorizado.")
+
+        for fild, value in user.model_dump().items():
+            if value:
+                print(fild, value)
+                if fild == "password":
+                    value = get_password_hash(value)
+                setattr(current_user, fild, value)
+
+        self.db_session.commit()
+        
+        return current_user
+
+    
+    def delete(self, user_id: str) -> dict:
+        user_on_db = self.db_session.query(UserModel).filter_by(id = user_id).first()
+
+        if(not user_on_db):
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+                                detail="Usuário não encontrado.")
+        
+        delete_image(user_on_db.profile_picture)    
+
+        for farm in user_on_db.farms:
+            for animal in farm.animals:
+                delete_image(animal.image_url)
+                
+
+        self.db_session.delete(user_on_db)
+        self.db_session.commit()
+
+        return {status.HTTP_204_NO_CONTENT: "Usuário deletado com sucesso."}
+
+    def login(self, form_data: OAuth2PasswordRequestForm):
+        user_on_db = self.db_session.query(UserModel).filter_by(username = form_data.username).first()
+
+        if not user_on_db or not verify_password(form_data.password, user_on_db.password):
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username ou senha incorretos.")
+        
+        access_token = create_acess_token(data={"sub": user_on_db.username})    
+
+        return {"access_token": access_token, "token_type": "bearer"}
+    
