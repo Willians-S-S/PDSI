@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
 from predpeso.db.connection import get_db
-from predpeso.models.models import UserModel
+from predpeso.models.models import UserModel, UserFarmRole
 from predpeso.schemas.user_schemas import UserRequest, UserResponse, UserUpdate
 from predpeso.services.user_service import UserService
 
@@ -17,7 +17,7 @@ def creat_user(name: str = Form(...),
                email: str = Form(...), 
                password: str = Form(...), 
                cpf: str = Form(...), 
-               role: str = Form(...), 
+               role: UserFarmRole = Form(...), 
                image: UploadFile = File(...), 
                db: Session = Depends(get_db) ):
     
