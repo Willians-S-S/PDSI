@@ -71,3 +71,19 @@ class UserService:
         self.db_session.commit()
         
         return user_on_db
+    
+    def get(self, user_id: str) -> UserResponse:
+        user_on_db = self.db_session.query(UserModel).filter_by(id = user_id).first()
+
+        if(not user_on_db):
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, 
+                detail="Usuário não encontrado."
+                )
+        
+        return user_on_db
+    
+    def get_all(self) -> list[UserResponse]:
+        users_on_db = self.db_session.query(UserModel).all()
+
+        return users_on_db
