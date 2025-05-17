@@ -2,11 +2,9 @@
 name = "predpeso"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Willians-S-S", email = "09willians@gmail.com"}
-]
+authors = [{ name = "Willians-S-S", email = "09willians@gmail.com" }]
 readme = "README.md"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10"
 dependencies = [
     "fastapi[standard] (>=0.115.8,<0.116.0)",
     "sqlalchemy (>=2.0.38,<3.0.0)",
@@ -22,13 +20,15 @@ dependencies = [
 ]
 
 [tool.poetry] # Seção tool.poetry
-packages = [{include = "predpeso", from = "src"}] # packages DENTRO de tool.poetry
+packages = [
+    { include = "predpeso", from = "src" },
+] # packages DENTRO de tool.poetry
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.14"
-pandas = "^2.2.0"  # Remova se não for usar
-scikit-learn = "^1.4.1"  # Remova se não for usar
-matplotlib = "^3.8.2" # Remova se nao for usar.
+pandas = "^2.2.0"       # Remova se não for usar
+scikit-learn = "^1.4.1" # Remova se não for usar
+matplotlib = "^3.8.2"   # Remova se nao for usar.
 
 
 [tool.poetry.group.dev.dependencies]

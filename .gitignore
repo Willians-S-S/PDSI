@@ -1,5 +1,8 @@
 
 __pycache__/
+.zed
+
+alembic
 
 *.pyc
 
