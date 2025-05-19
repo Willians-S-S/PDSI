@@ -30,7 +30,7 @@ class UserService:
             "name": name,
             "username": username,
             "email": email,
-            "password": password,
+            "password": get_password_hash(password),
             "cpf": cpf,
         }
         
