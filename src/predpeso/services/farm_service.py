@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 import uuid
 
 from predpeso.commons.image import delete_image
-from predpeso.models.models import FarmModel, UserModel
+from predpeso.models.models import FarmModel, UserModel, UserFarmAssociation
 from predpeso.schemas.farm_schemas import FarmRequest, FarmResponse, FarmUpdate
 
 class FarmService:
@@ -22,10 +22,16 @@ class FarmService:
                                 detail="Usuário não encontrado.")
         
         date_created_and_updated = datetime.now()
-        
-        farm_on_db = FarmModel(**farm.model_dump(), id=str(uuid.uuid4()), created_at=date_created_and_updated, updated_at=date_created_and_updated)
+
+        farm_data = farm.model_dump()
+        farm_data.pop("user_id", None) 
+        farm_on_db = FarmModel(**farm_data, id=str(uuid.uuid4()), created_at=date_created_and_updated, updated_at=date_created_and_updated)
 
         self.db_session.add(farm_on_db)
+        self.db_session.commit()
+
+        associantion = UserFarmAssociation(user_id=user_on_db.id, farm_id=farm_on_db.id)
+        self.db_session.add(associantion)
         self.db_session.commit()
 
         return farm_on_db
