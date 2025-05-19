@@ -31,6 +31,11 @@ def creat_user(name: str = Form(...),
                                           role=role,
                                           image=image)
 
+@user_router.get("/all", response_model=list[UserResponse])
+def get_all(db: Session = Depends(get_db), current_user=Depends(get_current_user)):
+    print("aaaaaa")
+    return UserService(db_session=db).get_all()
+
 @user_router.get("/{id_user}", response_model=UserResponse)
 def get_user_id(
                 id_user: str,  
@@ -39,9 +44,6 @@ def get_user_id(
     
     return UserService(db_session=db).get(user_id=id_user)
 
-@user_router.get("/all")
-def get_all(db: Session = Depends(get_db)):
-    return UserService(db_session=db).get_all()
 
 @user_router.put("/{id_user}", response_model=UserResponse)
 def upadate_user(user: UserUpdate,
