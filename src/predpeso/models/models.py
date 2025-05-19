@@ -31,6 +31,10 @@ class UserModel(Base):
         passive_deletes=True 
     )
 
+    @property
+    def farms(self):
+        return [assoc.farm for assoc in self.farm_associations]
+
     def __repr__(self):
         return f"<User id={self.id} username='{self.username}'>"
     

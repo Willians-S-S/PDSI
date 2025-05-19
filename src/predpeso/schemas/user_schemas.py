@@ -1,5 +1,8 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional, List
+
+from predpeso.schemas.farm_schemas import FarmResponse
 
 class UserRequest(BaseModel):
     name: str | None = None
@@ -20,6 +23,7 @@ class UserResponse(BaseModel):
     role: str | None = None
     created_at: datetime | None = None
     updated_at: datetime | None = None
+    farms: Optional[List[FarmResponse]] = []
 
 
 class UserUpdate(BaseModel):
