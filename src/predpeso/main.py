@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from predpeso.routes.user_router import user_router
+from predpeso.routes.farm_router import farm_router
 
 app = FastAPI()
 
@@ -14,3 +15,4 @@ app.add_middleware(
 )
 
 app.include_router(user_router)
+app.include_router(farm_router)
