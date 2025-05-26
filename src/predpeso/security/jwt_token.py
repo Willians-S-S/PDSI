@@ -47,7 +47,7 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
     except PyJWTError:
         raise credentials_exception
     
-    user_on_db = db.query(UserModel).filter_by(username=username).first()
+    user_on_db = db.query(UserModel).filter_by(email=username).first()
     
     if not user_on_db:
             raise credentials_exception

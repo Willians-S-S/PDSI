@@ -36,6 +36,10 @@ def get_all(db: Session = Depends(get_db), current_user=Depends(get_current_user
     print("aaaaaa")
     return UserService(db_session=db).get_all()
 
+@user_router.get("/email/{email}", response_model=UserResponse)
+def get_user_by_email(email: str, db: Session = Depends(get_db), current_user=Depends(get_current_user)):
+    return UserService(db_session=db).get_by_email(email=email)
+
 @user_router.get("/{id_user}", response_model=UserResponse)
 def get_user_id(
                 id_user: str,  

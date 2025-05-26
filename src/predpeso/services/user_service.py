@@ -61,7 +61,7 @@ class UserService:
             )
             
         date_created_and_updated = datetime.now()
-        # user.profile_picture = save_image(image)
+        user.profile_picture = save_image(image)
         
         user_on_db = UserModel(
             **user.model_dump(),
@@ -85,6 +85,17 @@ class UserService:
                 )
         
         return user_on_db
+    
+    def get_by_email(self, email: str) -> UserResponse:
+        users_on_db = self.db_session.query(UserModel).filter_by(email = email).first()
+
+        if not users_on_db:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, 
+                detail="Usuário não encontrado."
+                )
+        
+        return users_on_db
     
     def get_all(self) -> list[UserResponse]:
         users_on_db = self.db_session.query(UserModel).all()
@@ -128,12 +139,12 @@ class UserService:
         return {status.HTTP_204_NO_CONTENT: "Usuário deletado com sucesso."}
 
     def login(self, form_data: OAuth2PasswordRequestForm):
-        user_on_db = self.db_session.query(UserModel).filter_by(username = form_data.username).first()
+        user_on_db = self.db_session.query(UserModel).filter_by(email = form_data.username).first()
 
         if not user_on_db or not verify_password(form_data.password, user_on_db.password):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username ou senha incorretos.")
         
-        access_token = create_acess_token(data={"sub": user_on_db.username})    
+        access_token = create_acess_token(data={"sub": user_on_db.email})    
 
         return {"access_token": access_token, "token_type": "bearer"}
     
