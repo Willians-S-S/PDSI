@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Fazenda - Previsão Peso Ruminantes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>PredPeso</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="profile.html">Perfil</a></li>
+        <li><a href="about.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="form-section">
+      <h2>Cadastrar Fazenda</h2>
+      <form action="/cadastrar-fazenda" method="post">
+        <label for="nomeFazenda">Nome da Fazenda:</label>
+        <input type="text" id="nomeFazenda" name="nomeFazenda" placeholder="Nome da Fazenda" required>
+
+        <label for="descricao">Descrição da Fazenda:</label>
+        <input type="text" id="descricao" name="descricao" placeholder="Descrição da fazenda" required>
+
+        <label for="quantidadeAnimal">Quantidade de Animal na Fazenda:</label>
+        <input type="number" id="quantidadeAnimal" name="quantidadeAnimal" placeholder="Quantidade de Animal" min="0" step="1" required>
+
+        <button type="submit" id="cadastrar-btn">Cadastrar Fazenda</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Gerenciamento de Peso de Animais. Todos os direitos reservados.</p>
+  </footer>
+  <script src="js/cadastro-fazenda.js"></script>
+</body>
+</html>

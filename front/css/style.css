@@ -384,3 +384,371 @@ footer p {
     padding: 0.8rem 1.5rem;
   }
 }
+
+
+/* style.css atualizado */
+:root {
+    --primary-color: #2a9d8f;
+    --secondary-color: #264653;
+    --accent-color: #e9c46a;
+    --text-dark: #2b2d42;
+    --text-light: #edf2f4;
+    --gradient-green: linear-gradient(135deg, #2a9d8f 0%, #264653 100%);
+  }
+  
+  /* Reset moderno */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Tipografia moderna */
+  h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+  }
+  
+  /* Header glassmorphism */
+  header {
+    background: rgba(42, 157, 143, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  
+  .navbar {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo h1 {
+    font-size: 1.8rem;
+    color: white;
+    letter-spacing: 1px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Hero section atualizada */
+  .hero {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-green),
+                url('../images/animals.jpg') center/cover;
+    background-blend-mode: multiply;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .hero h2 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero h2::after {
+    display: none;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Cards modernos */
+  .card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Formulários atualizados */
+  .form-section {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  .form-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+  
+  .form-section input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .form-section input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+  }
+  
+  .form-section button {
+    background: var(--gradient-green);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form-section button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px); 
+    gap: 0.5rem; 
+    justify-content: left; 
+    margin-top: 0.67rem; 
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item {
+    color: #edf2f4;
+    background-color: var(--secondary-color);
+    position: relative;
+    border-radius: 5px; /* Border-radius reduzido */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding-top: 100%; /* Mantém a proporção 1:1 (quadrado) */
+    width: 100px; /* Largura fixa */
+    height: 100px; /* Altura fixa */
+}
+
+.gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa 100% da largura do item */
+    height: 100%; /* Ocupa 100% da altura do item */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.33rem; 
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: whitesmoke;
+    /* opacity: 0; */
+    text-align: center;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+  
+  /* Botões do dashboard */
+  .dashboard-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--gradient-green);
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
+    transform: translateY(-3px);
+  }
+  
+  /* Footer moderno */
+  footer {
+    background: var(--secondary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+  }
+  
+  footer p {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  /* Media queries para mobile */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+  
+    .hero h2 {
+      font-size: 2rem;
+    }
+  
+    .dashboard-links {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Estilos para a foto de perfil */
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Torna a foto redonda */
+    overflow: hidden; /* Garante que a imagem não ultrapasse os limites */
+    margin: 0 auto 1.5rem; /* Centraliza e adiciona margem abaixo */
+    border: 4px solid #fff; /* Borda branca ao redor da foto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  }
+
+  .profile {
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .profile-animal-picture {
+    width: 100%;  /* Ocupar toda a largura disponível */
+    max-width: 400px; /* Define um tamanho máximo opcional */
+    aspect-ratio: 1 / 1; /* Mantém a proporção quadrada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Garante que a imagem não vaze */
+    border-radius: 10px; /* Bordas arredondadas opcionais */
+    margin: 20px auto; /* Centraliza na tela */
+}
+
+/* Faz a imagem preencher o espaço sem distorcer */
+#profile-image-animal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta a imagem para preencher sem distorcer */
+}
+
+.tabela-peso {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+.tabela-peso th, .tabela-peso td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabela-peso th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}

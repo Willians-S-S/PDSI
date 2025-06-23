@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualizar Animal - Previsão Peso Ruminantes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>PredPeso</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="profile.html">Perfil</a></li>
+        <li><a href="about.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="form-section">
+      <h2>Atualizar Animal</h2>
+      <form id="animalForm" action="/cadastrar-animal" method="post" enctype="multipart/form-data">
+        <label for="name">Nome do Animal:</label>
+        <input type="text" id="name" name="name" placeholder="Nome do animal" required>
+
+        <label for="breed">Raça (opcional):</label>
+        <input type="text" id="breed" name="breed" placeholder="Raça do animal">
+
+        <label for="age">Idade (opcional):</label>
+        <input type="number" id="age" name="age" placeholder="Idade do animal">
+
+        <label for="gender">Gênero:</label>
+        <input type="text" id="gender" name="gender" placeholder="Macho/Fêmea">
+
+        <label for="health_condition">Condição de Saúde (opcional):</label>
+        <input type="text" id="health_condition" name="health_condition" placeholder="Saúde do animal">
+
+        <button type="submit" id="cadastrar-btn">Cadastrar Animal</button>
+    </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Gerenciamento de Peso de Animais. Todos os direitos reservados.</p>
+  </footer>
+  <script src="js/atualizar-animal.js"></script>
+</body>
+</html>

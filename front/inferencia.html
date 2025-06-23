@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Animal - Previsão Peso Ruminantes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>PredPeso</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="profile.html">Perfil</a></li>
+        <li><a href="about.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="form-section">
+      <h2>Realizar Inferencia</h2>
+      <form id="animalForm" action="/cadastrar-animal" method="post" enctype="multipart/form-data">
+    
+        <label for="image">Foto do Animal:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <button type="submit" id="cadastrar-btn">Realizar Inferencia do Animal</button>
+    </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Gerenciamento de Peso de Animais. Todos os direitos reservados.</p>
+  </footer>
+  <script src="js/inferencia.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 document.getElementById('login-btn').addEventListener('click', function (event) {
     event.preventDefault(); // Evita o comportamento padrão do formulário
 
-    const URL = 'http://127.0.0.1:8000/user/token'; // Substitua pela URL do backend
+    const URL = 'http://127.0.0.1:8000/user/token'; 
 
     // Obter os valores dos campos de entrada
     const email = document.getElementById('email').value;
@@ -34,6 +34,7 @@ document.getElementById('login-btn').addEventListener('click', function (event) 
         if (data.access_token) {
             // Armazenar o token no localStorage
             localStorage.setItem('token', data.access_token);
+            console.log('Token armazenado:', data.access_token);
 
             // Redirecionar para a página de perfil
             window.location.href = 'profile.html';

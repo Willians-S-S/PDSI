@@ -1,0 +1,229 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Torna o body flex para manter o footer no final */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Cabeçalho e Navegação */
+  header {
+    background-color: #004d40;
+    color: #fff;
+    padding: 10px 0;
+  }
+  .navbar {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar .logo h1 {
+    font-size: 1.5em;
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  .nav-links li {
+    margin-left: 20px;
+  }
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #ffeb3b;
+  }
+  
+  /* Área principal do perfil */
+  main.profile-page {
+    flex: 1;
+    background-color: #f8f8f8;
+  }
+  
+  /* Imagem de capa */
+  .cover-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+  }
+  .cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Seção de cabeçalho do perfil (avatar, nome, etc.) */
+  .profile-header {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .avatar-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -60px auto 10px; /* "Sobe" o avatar por cima da capa */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+  .profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .profile-name {
+    font-size: 1.8em;
+    margin: 10px 0 5px;
+  }
+  .profile-role {
+    font-size: 1em;
+    color: #777;
+  }
+  .profile-email {
+    font-size: 0.9em;
+    color: #999;
+    margin-bottom: 20px;
+  }
+  
+  /* Estatísticas (Seguidores, Fazendas, etc.) */
+  .profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+  .stat-number {
+    font-weight: bold;
+    display: block;
+    font-size: 1.2em;
+  }
+  .stat-label {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  /* Botão de ação (ex.: seguir, editar, etc.) */
+  .btn-follow {
+    background-color: #004d40;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+  }
+  .btn-follow:hover {
+    background-color: #00332c;
+  }
+  
+  /* Seção com mensagem e botões do dashboard */
+  .profile-info {
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .profile-info h2 {
+    margin-bottom: 10px;
+  }
+  .profile-info p {
+    margin-bottom: 20px;
+  }
+  .dashboard-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .dashboard-links .btn {
+    background-color: #004d40;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+  .dashboard-links .btn:hover {
+    background-color: #00332c;
+  }
+  
+  /* Grid de fazendas (inspirado em layout estilo galeria) */
+  .farm-gallery {
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .farm-gallery h2 {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .gallery-item {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item:hover .overlay {
+    opacity: 1;
+  }
+  
+  /* Rodapé */
+  footer {
+    background-color: #004d40;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+  }
+  
